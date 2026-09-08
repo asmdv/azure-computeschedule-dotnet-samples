@@ -10,6 +10,7 @@ The samples are intentionally small and focused. Each project folder represents 
 |---|---|
 | `ExecuteCreate` | Standard VM create flow with network and disk setup |
 | `ExecuteVDICreateFlex` | VDI Flex create API sample flow |
+| `BulkCreateCustom` | 100-VM per-VM override request using the BulkActions SDK; per-size batch currently disabled |
 | `ExecuteStart` | Start existing VMs |
 | `ExecuteDeallocate` | Deallocate existing VMs |
 | `ExecuteDelete` | Delete existing VMs |
@@ -120,6 +121,11 @@ dotnet run -- --api-demo-json-string --resource-count 5
 
 For detailed setup, configuration, and usage instructions, check the documentation and source files in the folder for the sample you want to run.
 
+[`BulkCreateCustom`](./src/BulkCreateCustom/README.md) is a separate .NET 10 sample.
+`dotnet run --project src\BulkCreateCustom\BulkCreateCustom.csproj -- --validate`
+performs offline checks; normal execution reads the sample's local `config.json`
+and creates 100 billable VMs (Batch A only). `--config <path>` optionally overrides the file.
+
 ## Project Structure
 
 ```text
@@ -146,7 +152,7 @@ src/
 
 ## Shared Code
 
-All sample projects reference `src/Common`, which contains the shared helper layer used across the repository:
+The legacy sample projects reference `src/Common`, which contains the shared helper layer used across the repository. `BulkCreateCustom` is isolated and uses its own pinned BulkActions SDK:
 
 - `ComputescheduleOperations.cs`: common create, start, deallocate, delete, and hibernate operation flows
 - `HelperMethods.cs`: resource helpers, request builders, VNet creation, data disk creation, and operation polling

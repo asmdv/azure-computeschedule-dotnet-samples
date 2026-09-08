@@ -1,0 +1,18 @@
+{
+  "subscriptionId": "<subscription-guid>",
+  "resourceGroup": "<existing-resource-group>",
+  "region": "<enabled-region>",
+  "subnetId": "/subscriptions/<subscription-guid>/resourceGroups/<network-resource-group>/providers/Microsoft.Network/virtualNetworks/<vnet>/subnets/<subnet>",
+  "zones": ["1", "2", "3"],
+  "runPrefix": "demo",
+  "adminUsername": "bulkoperator",
+  "imageVersion": "<verified-existing-version>",
+  "imageMinimumOSDiskGB": 127,
+  "pollTimeoutMinutes": 30,
+  "sizes": [
+    { "name": "Standard_D4s_v5", "rank": 0, "osDiskGB": 256 },
+    { "name": "Standard_D8s_v5", "rank": 1, "osDiskGB": 320 },
+    { "name": "Standard_E4s_v5", "rank": 2, "osDiskGB": 384 },
+    { "name": "Standard_E8s_v5", "rank": 3, "osDiskGB": 448 }
+  ]
+}

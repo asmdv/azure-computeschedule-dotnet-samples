@@ -176,3 +176,7 @@ node_modules/
 # Environment variable files with secrets  never commit these
 .env
 !.env.example
+
+# Local BulkCreateCustom configuration
+src/BulkCreateCustom/config.json
+src/BulkCreateCustom/bruno/environments/Local.bru
